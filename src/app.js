@@ -21,6 +21,8 @@ app.get("/", (req, res) => {
 });
 
 import userRouter from "./routes/user.route.js";
+import imageRouter from "./routes/image.route.js";
 app.use("/api/v2/users", userRouter);
+app.use("/api/v2/images", imageRouter);
 
 export default app;
