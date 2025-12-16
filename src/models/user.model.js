@@ -26,11 +26,12 @@ const userSchema = new Schema(
       required: true,
       minLength: 8,
       validate: {
-        validator: (value) => {
-          const passwordRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
-          return passwordRegex.test(value);
+        validator: function (value) {
+          return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(
+            value
+          );
         },
-        message: (props) => `${props.value} is not a valid password! `,
+        message: ` Password must contain uppercase, lowercase, number and special character`,
       },
     },
     creditBalance: {

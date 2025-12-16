@@ -9,12 +9,14 @@ import {
   logOutUser,
 } from "../controllers/user.controller.js";
 
+import { verifyJWT } from "../middlewares/auth.middleware.js";
+
 const router = Router();
 router.route("/register").post(registerUser);
 router.route("/login").post(loginUser);
-router.route("/logout").post(logOutUser);
+router.route("/logout").post(verifyJWT, logOutUser);
 router.route("/refresh-token").post(refreshAccessToken);
-router.route("/current-user").get(fetchCurrentUser);
-router.route("/credit").get(fetchCredit);
+router.route("/current-user").get(verifyJWT, fetchCurrentUser);
+router.route("/credit").get(verifyJWT, fetchCredit);
 
 export default router;

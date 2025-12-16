@@ -138,15 +138,9 @@ const loginUser = asyncHandler(async (req, res) => {
 });
 
 const fetchCurrentUser = asyncHandler(async (req, res) => {
-  try {
-    return res
-      .status(200)
-      .json(
-        new ApiResponse(200, req.user, "Current user fetched successfully")
-      );
-  } catch (error) {
-    throw new ApiError(500, error?.message || "Something went wrong");
-  }
+  return res
+    .status(200)
+    .json(new ApiResponse(200, req.user, "Current User Fetched Successfully"));
 });
 
 const fetchCredit = asyncHandler(async (req, res) => {

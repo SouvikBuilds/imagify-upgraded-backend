@@ -1,1 +1,1 @@
-export const DB_NAME = "imagify";
+export const DB_NAME = "upgradedimagify";
